@@ -65,7 +65,7 @@
 						</div>
 						<br>`
 						if(
-							(arquivado && item.archived) ||
+							(arquivado && !item.archived) ||
 							(descricao && item.description==null) ||
 							(php && item.language!="PHP") ||
 							(nome.length > 0 && !item.name.toUpperCase().includes(nome.toUpperCase()))
