@@ -3,29 +3,54 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>API GitHub</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+		rel="stylesheet" 
+		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
+		crossorigin="anonymous">
+		
 	</head>
-	<body>
-		<main>
-			<h1>Lista de repositórios</h1>
-			<hr>
-			Nome de usuário:<input id="pesquisa" type="text"><br>
-			Apenas arquivados?<input type="checkbox" id="arquivados"><br>
-			Apenas repositórios com descrição?<input type="checkbox" id="descricao"><br>
-			Apenas repositórios PHP?<input type="checkbox" id="php"><br>
-			Nome do repositório contém:<input id="nome" type="text"><br>
-			Ordenar resultados por:
-			<select name="cars" id="ordenar">
-				<option value="">Nenhum critério</option>
-				<option value="?sort=updated&direction=desc">Data de atualização</option>
-				<option value="?sort=name&direction=asc">Nome do repositório</option>
-			</select><br>
-			<input type="button" onclick="getApiGitHub(pesquisa.value)" value="Pesquisar">
-			<br>
-			<hr>
-			<br>
-			<div id="repositorios"></div> 
+	<body class="bg-secondary">
+		<main class="border my-5 bg-white" style="margin:auto; width:90%; max-width:900px">
+			<h1 class="bg-primary text-white p-3 text-center">Listar repositórios do usuário</h1>
+			<div class="p-3">
+				<div class="mb-4">
+					<input class="form-control" id="pesquisa" type="text" placeholder="Nome do usuário">
+				</div>
+				<div class="mb-4">
+					<p>1) Filtros por atributos:</p>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="arquivados">
+						<label class="form-check-label" for="arquivados">Apenas arquivados?</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="descricao">
+						<label class="form-check-label" for="descricao">Apenas repositórios com descrição?</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="php">
+						<label class="form-check-label" for="php">Apenas repositórios PHP?</label>
+					</div>
+				</div>
+				<div class="mb-4">
+					<p>2) Ordenar resultados por:</p>
+					<select class="form-select" name="cars" id="ordenar">
+						<option value="">Nenhum critério</option>
+						<option value="?sort=updated&direction=desc">Data de atualização</option>
+						<option value="?sort=name&direction=asc">Nome do repositório</option>
+					</select>
+				</div>
+				<div class="mb-4">
+				<p>3) Filtrar pelo nome do repositório</p>
+					<input class="form-control" id="nome" type="text" placeholder="Nome do repositório contém...">
+				</div>
+				<div class="mb-4 d-grid">
+					<input type="button" class="btn btn-success btn-lg" onclick="getApiGitHub(pesquisa.value)" value="Pesquisar">
+				</div>
+				<hr>
+				<div id="repositorios">Resultados...</div> 
+			</div>
 		</main>
-	  
+		
 		<script>
 		const repositorios = document.querySelector('#repositorios')
 
@@ -80,6 +105,10 @@
 				}).catch(e => console.log(e))
 		}
 
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
+			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" 
+			crossorigin="anonymous">
 		</script>
 	</body>
 </html>
